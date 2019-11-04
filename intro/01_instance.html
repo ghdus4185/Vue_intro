@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{message}} - {{count}}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue ({
+      el: '#app',
+      data: {
+        message: 'hello vue',
+        count: 0
+      },
+      methods: {
+        plus: function() {
+          this.count++
+        },
+        // 키랑 벨류랑 똑같을 땐 생략할 수 있다.
+        // minus: function() {} 랑 똑같다
+        minus() {
+          this.count--
+        },
+        // plus2: () => {
+        //  console.log(this)
+        // }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <button v-on:keydown="getDogImages">멍멍!</button>
+    <button v-on:click="getCatImages">야옹!</button>
+    <img v-bind:src="image" alt="">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        image: '',
+      },
+      methods: {
+        getDogImages: function(){
+          const DOG_URL = 'https://dog.ceo/api/breeds/image/random'
+          axios.get(DOG_URL)
+          // 성공했을 때
+          .then((response)=>{
+            console.log(this)
+            this.image = response.data.message
+          })
+          // 실패했을 때
+          .catch((error)=>{})
+        },
+        getCatImages: function(){
+          const CAT_URL = 'https://api.thecatapi.com/v1/images/search'
+          axios.get(CAT_URL)
+          .then((response)=>{
+            console.log(this)
+            this.image = response.data[0].url
+          })
+          .catch((error)=>{})
+        }
+      }
+    })
+  </script>
+</body>
+</html>
